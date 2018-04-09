@@ -7,21 +7,16 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Arrays;
-import java.util.List;
-
 import in.flexmoney.assignment.domain.entity.CardDetailsResponseEntity;
 import in.flexmoney.assignment.domain.entity.CardEntity;
 import in.flexmoney.assignment.domain.executor.PostExecutionThread;
 import in.flexmoney.assignment.domain.executor.ThreadExecutor;
-import in.flexmoney.assignment.domain.interactor.note.GetNotesUseCase;
 import in.flexmoney.assignment.domain.repository.CardRepository;
 import io.reactivex.Observable;
 import io.reactivex.observers.TestObserver;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.verifyZeroInteractions;

@@ -1,15 +1,11 @@
 package in.flexmoney.assignment.domain.entity;
 
-/**
- * Created by agni on 09/04/18.
- */
-
 public class CardDetailsResponseEntity {
 
     private Boolean success;
     private Object data;
     private String errorMessage;
-    private Integer requestId;
+    private Long requestId;
     private String name;
     private Long requestTimestamp;
 
@@ -39,11 +35,11 @@ public class CardDetailsResponseEntity {
         this.errorMessage = errorMessage;
     }
 
-    public Integer getRequestId() {
+    public Long getRequestId() {
         return requestId;
     }
 
-    public void setRequestId(Integer requestId) {
+    public void setRequestId(Long requestId) {
         this.requestId = requestId;
     }
 

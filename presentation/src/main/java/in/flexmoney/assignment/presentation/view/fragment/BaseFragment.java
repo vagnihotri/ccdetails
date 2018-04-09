@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import in.flexmoney.assignment.presentation.dependency.component.FragmentInjector;
@@ -75,12 +76,22 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     @Override
     public void showLoader() {
         if (this.progressDialog == null) this.progressDialog = new ProgressDialog(getActivity());
+        this.progressDialog.setMessage("Loading...");
         this.progressDialog.show();
     }
 
     @Override
     public void hideLoader() {
         if (this.progressDialog != null) this.progressDialog.dismiss();
+    }
+
+    @Override
+    public void hideKeyboard() {
+        View view = getActivity().findViewById(android.R.id.content);
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     @Override

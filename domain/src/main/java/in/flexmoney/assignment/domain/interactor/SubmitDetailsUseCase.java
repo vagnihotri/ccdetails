@@ -9,10 +9,6 @@ import in.flexmoney.assignment.domain.executor.ThreadExecutor;
 import in.flexmoney.assignment.domain.repository.CardRepository;
 import io.reactivex.Observable;
 
-/**
- * Created by agni on 09/04/18.
- */
-
 public class SubmitDetailsUseCase extends UseCase<CardDetailsResponseEntity> {
 
     private CardRepository cardRepository;

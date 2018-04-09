@@ -1,9 +1,9 @@
 package in.flexmoney.assignment.data.net.wrapper;
 
-import in.flexmoney.assignment.data.net.error.ResponseErrorEntity;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import in.flexmoney.assignment.data.net.error.ResponseErrorEntity;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;

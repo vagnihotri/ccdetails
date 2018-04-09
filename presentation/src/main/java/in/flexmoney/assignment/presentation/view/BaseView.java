@@ -8,6 +8,7 @@ public interface BaseView {
 
     void showLoader();
     void hideLoader();
+    void hideKeyboard();
     void handleError(Throwable error);
     void showMessage(String message);
 }

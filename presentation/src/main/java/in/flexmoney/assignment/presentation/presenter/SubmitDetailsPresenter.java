@@ -1,7 +1,5 @@
 package in.flexmoney.assignment.presentation.presenter;
 
-import android.content.Context;
-
 import javax.inject.Inject;
 
 import in.flexmoney.assignment.domain.entity.CardDetailsResponseEntity;
@@ -9,10 +7,6 @@ import in.flexmoney.assignment.domain.entity.CardEntity;
 import in.flexmoney.assignment.domain.interactor.SubmitDetailsUseCase;
 import in.flexmoney.assignment.presentation.view.BaseView;
 import in.flexmoney.assignment.presentation.view.SubmitDetailsView;
-
-/**
- * Created by agni on 09/04/18.
- */
 
 public class SubmitDetailsPresenter extends BasePresenter implements Presenter {
 

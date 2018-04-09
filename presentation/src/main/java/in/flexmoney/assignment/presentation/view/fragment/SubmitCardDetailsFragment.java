@@ -3,6 +3,10 @@ package in.flexmoney.assignment.presentation.view.fragment;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -13,10 +17,6 @@ import in.flexmoney.assignment.presentation.R;
 import in.flexmoney.assignment.presentation.presenter.BasePresenter;
 import in.flexmoney.assignment.presentation.presenter.SubmitDetailsPresenter;
 import in.flexmoney.assignment.presentation.view.SubmitDetailsView;
-
-/**
- * Created by agni on 09/04/18.
- */
 
 public class SubmitCardDetailsFragment extends BaseFragment implements SubmitDetailsView {
 
@@ -55,6 +55,7 @@ public class SubmitCardDetailsFragment extends BaseFragment implements SubmitDet
         CardEntity card = validateCardDetails();
         if(card != null) {
             this.submitDetailsPresenter.submitDetails(card);
+            this.hideKeyboard();
         }
     }
 
@@ -69,25 +70,21 @@ public class SubmitCardDetailsFragment extends BaseFragment implements SubmitDet
         Integer expiryMonth = null, expiryYear = null;
 
         if(name.isEmpty()) {
-            nameInputLayout.setErrorEnabled(true);
             isValid = false;
             errorString += "\n" + getString(R.string.empty_name);
         }
 
         if(cardNo.isEmpty()) {
-            cardNumberInputLayout.setErrorEnabled(true);
             isValid = false;
             errorString += "\n" + getString(R.string.empty_card_number);
         }
 
         if(cvv.isEmpty()) {
-            cvvInputLayout.setErrorEnabled(true);
             isValid = false;
             errorString += "\n" + getString(R.string.empty_cvv);
         }
 
         if(expiryMonthEditText.getText().toString().isEmpty()) {
-            expiryMonthInputLayout.setErrorEnabled(true);
             isValid = false;
             errorString += "\n" + getString(R.string.empty_expiry_month);
         } else {
@@ -95,7 +92,6 @@ public class SubmitCardDetailsFragment extends BaseFragment implements SubmitDet
         }
 
         if(expiryYearEditText.getText().toString().isEmpty()) {
-            expiryYearInputLayout.setErrorEnabled(true);
             isValid = false;
             errorString += "\n" + getString(R.string.empty_expiry_year);
         } else {
@@ -103,23 +99,19 @@ public class SubmitCardDetailsFragment extends BaseFragment implements SubmitDet
         }
 
         if(cardNo.length() > 0 && cardNo.length() != 16) {
-            cardNumberInputLayout.setErrorEnabled(true);
             isValid = false;
             errorString += "\n" + getString(R.string.invalid_card_number);
         }
 
         if(cvv.length() > 0 && cvv.length() != 3) {
-            cvvInputLayout.setErrorEnabled(true);
             isValid = false;
             errorString += "\n" + getString(R.string.invalid_cvv);
         }
         if(expiryMonth != null && expiryMonth > 12) {
-            expiryMonthInputLayout.setErrorEnabled(true);
             isValid = false;
             errorString += "\n" + getString(R.string.invalid_expiry_month);
         }
         if(expiryYear != null && (expiryYear < 2018 || expiryYear > 2029)) {
-            expiryYearInputLayout.setErrorEnabled(true);
             isValid = false;
             errorString += "\n" + getString(R.string.invalid_expiry_year);
         }
@@ -134,14 +126,18 @@ public class SubmitCardDetailsFragment extends BaseFragment implements SubmitDet
 
     @Override
     public void viewDetails(CardDetailsResponseEntity cardDetails) {
-        String title = "Card Details:";
-        String message = "";
-        if(cardDetails.isSuccess()) {
+        String title, message;
+        if(!cardDetails.isSuccess()) {
+            title = "Error!";
             message = cardDetails.getErrorMessage();
         } else {
-            message = "Request Id: " + cardDetails.getRequestId() +
-                      "Nme: " + cardDetails.getName() +
-                      "Request Date: " + cardDetails.getRequestTimestamp();
+            Date date = new Date(cardDetails.getRequestTimestamp());
+            SimpleDateFormat format = new SimpleDateFormat("d/M/yyyy HH:mm Z", Locale.US);
+            String dateString = format.format(date);
+            title = "Card Details - \n";
+            message = "Request Id: " + cardDetails.getRequestId() + "\n" +
+                      "Name: " + cardDetails.getName() + "\n" +
+                      "Request Date: " + dateString;
         }
         showAlert(title, message);
     }

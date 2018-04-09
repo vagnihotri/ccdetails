@@ -22,7 +22,7 @@ public class HttpInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request().newBuilder()
                 .addHeader("Content-Type", RestApi.CONTENT_TYPE)
-                .addHeader("Origin", RestApi.ORIGIN)
+                //.addHeader("Origin", RestApi.ORIGIN)
                 .build();
         return chain.proceed(request);
     }

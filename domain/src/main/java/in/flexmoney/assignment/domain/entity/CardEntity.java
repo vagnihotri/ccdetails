@@ -1,9 +1,5 @@
 package in.flexmoney.assignment.domain.entity;
 
-/**
- * Created by agni on 09/04/18.
- */
-
 public class CardEntity {
 
     private String name;
