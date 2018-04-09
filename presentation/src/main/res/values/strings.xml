@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Assignment</string>
+
+    <string name="textinputedittext_name">Enter Name on Card</string>
+    <string name="textinputedittext_card_number">Enter Card Number</string>
+    <string name="textinputedittext_cvv">CVV</string>
+    <string name="textinputedittext_expiry_month">Expiry Month</string>
+    <string name="textinputedittext_expiry_year">Expiry Year</string>
+    <string name="button_submit">Submit</string>
+
+    <string name="empty_name">Name is empty</string>
+    <string name="empty_card_number">Card Number is empty</string>
+    <string name="empty_cvv">CVV is empty</string>
+    <string name="empty_expiry_month">Expiry Month is empty</string>
+    <string name="empty_expiry_year">Expiry Year is empty</string>
+
+    <string name="invalid_card_number">Card Number is invalid</string>
+    <string name="invalid_cvv">CVV is invalid</string>
+    <string name="invalid_expiry_month">Expiry Month is invalid</string>
+    <string name="invalid_expiry_year">Expiry Year is invalid</string>
+
+    <string name="title_activity_main">Card Details</string>
+
+
+    <string name="message_error">Some error occurred</string>
+    <string name="message_ok">Ok</string>
+
+</resources>
